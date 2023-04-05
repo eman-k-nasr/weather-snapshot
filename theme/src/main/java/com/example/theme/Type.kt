@@ -1,4 +1,4 @@
-package com.example.weathersnapshot.ui.theme
+package com.example.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

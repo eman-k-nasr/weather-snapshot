@@ -1,37 +1,35 @@
 package com.example.weathersnapshot
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.actions.Actions
 import com.example.actions.ImageInfo
-import com.example.weathersnapshot.ui.theme.WeatherSnapshotTheme
+import com.example.theme.WeatherSnapshotTheme
 
-class MainActivity : ComponentActivity() {
+class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             WeatherSnapshotTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column {
-                        Greeting("Android")
+                    Column(modifier = Modifier.padding(16.dp)) {
                         Button(onClick = {
                             startActivity(
                                 Actions.openCameraActivity(
-                                    context = this@MainActivity,
+                                    context = this@HomeActivity,
                                     imageInfo = ImageInfo(address = "cairo",date = "4-3-2023", time = "10:00 pm")
                                 )
                             )
@@ -40,7 +38,7 @@ class MainActivity : ComponentActivity() {
                         }
                         Button(onClick = {
                             startActivity(
-                                Actions.openAccessLocationActivity(this@MainActivity)
+                                Actions.openAccessLocationActivity(this@HomeActivity)
                             )
                         }) {
                             Text(text = "access location")
@@ -49,18 +47,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    WeatherSnapshotTheme {
-        Greeting("Android")
     }
 }
