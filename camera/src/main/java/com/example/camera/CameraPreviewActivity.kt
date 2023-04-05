@@ -11,6 +11,7 @@ import com.example.actions.Actions.IMAGE_INFO
 import com.example.actions.ImageInfo
 import com.example.camera.components.*
 import com.example.theme.WeatherSnapshotTheme
+import com.example.utils.SnapshotTopbar
 
 class CameraPreviewActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
@@ -22,7 +23,7 @@ class CameraPreviewActivity : AppCompatActivity() {
             WeatherSnapshotTheme {
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
-                    topBar = { CameraTopBar() },
+                    topBar = { SnapshotTopbar() },
                 ) {
                     SnapshotScreen(modifier = Modifier
                         .padding(it)

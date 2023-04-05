@@ -15,6 +15,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
+fun SnapshotTopbar(modifier: Modifier = Modifier){
+    TopBar(modifier = modifier, title = "Snapshot", backIcon = null)
+}
+
+@Composable
 fun TopBar(
     modifier: Modifier,
     title: String,
