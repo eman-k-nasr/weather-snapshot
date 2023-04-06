@@ -22,7 +22,7 @@ import com.example.weathersnapshot.R
 @Composable
 fun StartScreen(
     modifier: Modifier,
-    getCurrentLocation: () -> Unit,
+    openWeatherScreen: () -> Unit,
 ){
     Column(
         modifier = modifier,
