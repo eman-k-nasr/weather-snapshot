@@ -13,7 +13,10 @@ import com.example.actions.ImageInfo
 import com.example.camera.R
 
 @Composable
-fun SnapshotScreen(modifier: Modifier){
+fun SnapshotScreen(
+    imageInfo: ImageInfo?,
+    modifier: Modifier
+){
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
@@ -26,11 +29,11 @@ fun SnapshotScreen(modifier: Modifier){
             if(shouldShowPermission){
                 if(imageUri != emptyImageUri){
                     ImageOverlay(
-                        imageInfo = ImageInfo(),
+                        imageInfo = imageInfo,
                         painter = rememberAsyncImagePainter(imageUri)
                     )
                 }else{
-                    Snapshot(
+                    CameraLauncher(
                         onImageFile = { file ->
                             imageUri = file.toUri()
                         }
@@ -38,7 +41,7 @@ fun SnapshotScreen(modifier: Modifier){
                 }
             }else{
                 ImageOverlay(
-                    imageInfo = ImageInfo(),
+                    imageInfo = imageInfo,
                     painter = painterResource(id = R.drawable.black )
                 )
             }

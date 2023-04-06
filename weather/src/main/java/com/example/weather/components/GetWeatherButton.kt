@@ -1,18 +1,18 @@
-package com.example.location.components
+package com.example.weather.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun GetLocationButton(
+fun GetWeatherButton(
     modifier: Modifier,
-    onClick: () -> Unit,
+    onClick:  () -> Unit,
 ){
     Row(
         modifier = modifier
@@ -23,11 +23,11 @@ fun GetLocationButton(
             },
             icon = {
                 Icon(
-                    Icons.Filled.Map,
-                    contentDescription = "location"
+                    Icons.Filled.Cloud,
+                    contentDescription = "weather"
                 )
             },
-            text = { Text("Get Location") }
+            text = { Text("Know Weather") }
         )
     }
 }

@@ -9,7 +9,7 @@ import java.io.File
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @Composable
-fun Snapshot(
+fun CameraLauncher(
     modifier: Modifier = Modifier,
     cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
     onImageFile: (File) -> Unit = { }
@@ -17,7 +17,7 @@ fun Snapshot(
     CameraPermission(
         modifier = Modifier.fillMaxSize(),
         content = {
-            CameraCapture(modifier, cameraSelector, onImageFile)
+            CameraCapturePreview(modifier, cameraSelector, onImageFile)
         }
     )
 }

@@ -1,4 +1,4 @@
-package com.example.location.components
+package com.example.weather.components
 
 import android.Manifest
 import androidx.compose.runtime.Composable

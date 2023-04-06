@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.example.actions.Actions
 import com.example.actions.ImageInfo
 import com.example.theme.WeatherSnapshotTheme
+import com.example.weathersnapshot.components.StartScreen
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,25 +26,23 @@ class HomeActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Column(modifier = Modifier.padding(16.dp)) {
-                        Button(onClick = {
-                            startActivity(
-                                Actions.openCameraActivity(
-                                    context = this@HomeActivity,
-                                    imageInfo = ImageInfo(address = "cairo",date = "4-3-2023", time = "10:00 pm")
-                                )
-                            )
-                        }) {
-                            Text(text = "open camera")
-                        }
-                        Button(onClick = {
-                            startActivity(
-                                Actions.openAccessLocationActivity(this@HomeActivity)
-                            )
-                        }) {
-                            Text(text = "access location")
-                        }
+                    StartScreen(modifier = Modifier.padding(16.dp)) {
+                        startActivity(
+                            Actions.openWeatherActivity(context = this)
+                        )
                     }
+//                    Column(modifier = Modifier.padding(16.dp)) {
+//                        Button(onClick = {
+//                            startActivity(
+//                                Actions.openCameraActivity(
+//                                    context = this@HomeActivity,
+//                                    imageInfo = ImageInfo(address = "cairo",date = "4-3-2023", time = "10:00 pm")
+//                                )
+//                            )
+//                        }) {
+//                            Text(text = "Take a snapshot")
+//                        }
+//                    }
                 }
             }
         }

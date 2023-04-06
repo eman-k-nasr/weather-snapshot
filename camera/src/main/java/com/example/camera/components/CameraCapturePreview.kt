@@ -26,7 +26,7 @@ import java.io.File
 
 @ExperimentalCoroutinesApi
 @Composable
-fun CameraCapture(
+fun CameraCapturePreview(
     modifier: Modifier = Modifier,
     cameraSelector: CameraSelector = CameraSelector.DEFAULT_BACK_CAMERA,
     onImageFile: (File) -> Unit = {}

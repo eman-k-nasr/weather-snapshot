@@ -14,8 +14,8 @@ dependencyResolutionManagement {
 }
 rootProject.name = "WeatherSnapshot"
 include ':app'
-include ':location'
 include ':camera'
 include ':actions'
 include ':theme'
 include ':utils'
+include ':weather'

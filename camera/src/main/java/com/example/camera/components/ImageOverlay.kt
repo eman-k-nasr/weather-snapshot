@@ -22,7 +22,7 @@ import com.example.actions.ImageInfo
 @Composable
 fun ImageOverlay(
     modifier: Modifier = Modifier,
-    imageInfo: ImageInfo,
+    imageInfo: ImageInfo?,
     painter: Painter
 ){
     val shape =  RoundedCornerShape(8.dp)
@@ -56,7 +56,7 @@ fun ImageOverlay(
                 )
             )
             Text(
-                text = imageInfo.address,
+                text = imageInfo?.address?:"Your Address",
                 style = TextStyle(
                     color = White,
                     fontWeight = FontWeight.Bold,
@@ -72,18 +72,31 @@ fun ImageOverlay(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = "${imageInfo.temperature} (${imageInfo.status})",
+                    text = imageInfo?.temperature?:"0 C",
                     color = White
                 )
                 Text(
-                    text = "${imageInfo.date} at ${imageInfo.time}",
+                    text = "(${imageInfo?.status?:"Clear"})",
                     color = White
                 )
-                Spacer(modifier = Modifier.padding(16.dp))
             }
 
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = imageInfo?.date?:"4-3-2023",
+                    color = White
+                )
+                Text(
+                    text = imageInfo?.time?:"02:30",
+                    color = White
+                )
+            }
+
+            Spacer(modifier = Modifier.padding(8.dp))
+
         }
-
-
     }
 }

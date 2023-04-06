@@ -25,10 +25,12 @@ class CameraPreviewActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     topBar = { SnapshotTopbar() },
                 ) {
-                    SnapshotScreen(modifier = Modifier
-                        .padding(it)
-                        .fillMaxHeight()
-                        .fillMaxWidth()
+                    SnapshotScreen(
+                        imageInfo = imageInfo,
+                        modifier = Modifier
+                            .padding(it)
+                            .fillMaxHeight()
+                            .fillMaxWidth()
                     )
                 }
             }

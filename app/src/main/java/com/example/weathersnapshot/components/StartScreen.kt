@@ -1,4 +1,4 @@
-package com.example.location.components
+package com.example.weathersnapshot.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -6,19 +6,21 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.location.R
+import com.example.actions.Actions
+import com.example.weathersnapshot.R
 
 @Composable
-fun LocationScreen(
+fun StartScreen(
     modifier: Modifier,
     getCurrentLocation: () -> Unit,
 ){
@@ -26,8 +28,7 @@ fun LocationScreen(
         modifier = modifier,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
-        var shouldShowPermission by remember { mutableStateOf(false) }
-
+        val context = LocalContext.current
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -36,7 +37,7 @@ fun LocationScreen(
         ){
             Image(
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                painter = painterResource(id = R.drawable.map ),
+                painter = painterResource(id = R.drawable.snapshot),
                 contentDescription = "map",
                 contentScale = ContentScale.Inside,
             )
@@ -44,7 +45,7 @@ fun LocationScreen(
                 text = "Ready to Take beautiful snapshot!!",
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 22.sp
+                    fontSize = 18.sp
                 )
             )
             Text(
@@ -55,28 +56,23 @@ fun LocationScreen(
                 text = "To get your beautiful photo ,we'll go through these small steps: ",
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 14.sp
                 )
             )
 
             Text(
-                text = "1- Get Access To your Location \n2- Get Weather status \n3- Take your beautiful snapshot!!"
+                text = "1- Know Weather status \n2- Take your beautiful snapshot!!"
             )
-            if(shouldShowPermission){
-                LocationPermission{
-                    getCurrentLocation.invoke()
-
-                }
-            }
         }
 
-        GetLocationButton(
+        GetStartButton(
             modifier = Modifier
                 .padding(bottom = 16.dp)
                 .align(Alignment.CenterHorizontally)
         ){
-            shouldShowPermission = true
+            context.startActivity(
+                Actions.openWeatherActivity(context = context)
+            )
         }
-
     }
 }
