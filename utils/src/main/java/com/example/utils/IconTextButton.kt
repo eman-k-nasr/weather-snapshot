@@ -1,18 +1,19 @@
-package com.example.weather.components
+package com.example.utils
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.ExtendedFloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Cloud
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 
 @Composable
-fun GetWeatherButton(
+fun IconTextButton(
     modifier: Modifier,
-    onClick:  () -> Unit,
+    text: String,
+    icon: ImageVector,
+    onClick: () -> Unit,
 ){
     Row(
         modifier = modifier
@@ -23,11 +24,11 @@ fun GetWeatherButton(
             },
             icon = {
                 Icon(
-                    Icons.Filled.Cloud,
-                    contentDescription = "weather"
+                    imageVector = icon,
+                    contentDescription = "icon"
                 )
             },
-            text = { Text("Know Weather") }
+            text = { Text(text = text) }
         )
     }
 }

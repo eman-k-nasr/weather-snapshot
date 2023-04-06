@@ -1,6 +1,5 @@
 package com.example.camera.components
 
-
 import android.util.Log
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -10,6 +9,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Camera
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import com.example.camera.executor
 import com.example.camera.getCameraProvider
 import com.example.camera.takePicture
+import com.example.utils.IconTextButton
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import java.io.File
@@ -52,19 +54,24 @@ fun CameraCapturePreview(
                 }
             )
 
-            SnapShotButton(
+            IconTextButton(
                 modifier = Modifier
                     .wrapContentSize()
                     .padding(16.dp)
-                    .align(Alignment.BottomCenter)
+                    .align(Alignment.BottomCenter),
+                text = "Take A Snapshot",
+                icon = Icons.Filled.Camera
             ) {
                 coroutineScope.launch {
-                    onImageFile(imageCaptureUseCase.takePicture(
-                        context = context,
-                        executor = context.executor
-                    ))
+                    onImageFile(
+                        imageCaptureUseCase.takePicture(
+                            context = context,
+                            executor = context.executor
+                        )
+                    )
                 }
             }
+
 
         }
 

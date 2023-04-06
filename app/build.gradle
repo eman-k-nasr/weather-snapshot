@@ -51,8 +51,10 @@ android {
 dependencies {
     implementation project(":theme")
     implementation project(":actions")
+    implementation project(":utils")
     implementation project(":camera")
     implementation project(":weather")
+
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'

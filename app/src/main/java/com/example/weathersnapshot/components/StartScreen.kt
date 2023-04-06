@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ThumbUp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -17,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.actions.Actions
+import com.example.utils.IconTextButton
 import com.example.weathersnapshot.R
 
 @Composable
@@ -65,11 +68,13 @@ fun StartScreen(
             )
         }
 
-        GetStartButton(
+        IconTextButton(
             modifier = Modifier
                 .padding(bottom = 16.dp)
-                .align(Alignment.CenterHorizontally)
-        ){
+                .align(Alignment.CenterHorizontally),
+            text = "Get Started",
+            icon = Icons.Outlined.ThumbUp
+        ) {
             context.startActivity(
                 Actions.openWeatherActivity(context = context)
             )
