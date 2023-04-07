@@ -1,4 +1,4 @@
-package com.example.history.data.model
+package com.example.database.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

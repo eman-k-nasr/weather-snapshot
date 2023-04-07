@@ -1,11 +1,11 @@
-package com.example.history.data.di
+package com.example.database.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.history.data.local.HistoryDao
-import com.example.history.data.local.HistoryDatabase
-import com.example.history.data.repo.HistoryRepositiryImpl
-import com.example.history.data.repo.HistoryRepository
+import com.example.database.repo.HistoryRepositiryImpl
+import com.example.database.repo.HistoryRepository
+import com.example.database.room.HistoryDao
+import com.example.database.room.HistoryDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

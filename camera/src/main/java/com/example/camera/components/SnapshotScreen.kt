@@ -15,12 +15,14 @@ import androidx.core.net.toUri
 import coil.compose.rememberAsyncImagePainter
 import com.example.actions.ImageInfo
 import com.example.camera.R
+import com.example.database.model.HistoryItem
 import com.example.utils.IconTextButton
 
 @Composable
 fun SnapshotScreen(
     imageInfo: ImageInfo?,
-    modifier: Modifier
+    modifier: Modifier,
+    onImageCaptured: (HistoryItem) -> Unit,
 ){
     Column(
         modifier = modifier,
@@ -38,6 +40,20 @@ fun SnapshotScreen(
                         imageInfo = imageInfo,
                         painter = rememberAsyncImagePainter(imageUri)
                     )
+
+                    imageInfo?.let {
+                        onImageCaptured.invoke(
+                            HistoryItem(
+                                imageUri = imageUri.toString(),
+                                address = it.address,
+                                date = it.date,
+                                time = it.time,
+                                temperature = it.temperature,
+                                status = it.status
+                            )
+                        )
+                    }
+
 
                     IconTextButton(
                         modifier = Modifier

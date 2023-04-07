@@ -6,7 +6,7 @@
 
     <application>
         <activity
-            android:name=".CameraPreviewActivity"
+            android:name=".presentation.CameraPreviewActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

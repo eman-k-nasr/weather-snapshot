@@ -2,7 +2,7 @@ package com.example.history.components
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.history.data.model.HistoryItem
+import com.example.database.model.HistoryItem
 
 @Composable
 fun HistoryScreen(

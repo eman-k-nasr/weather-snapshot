@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -43,7 +45,7 @@ dependencies {
     implementation project(":theme")
     implementation project(":actions")
     implementation project(":utils")
-
+    implementation project(":core:database")
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,6 +59,14 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
     implementation 'androidx.activity:activity-compose:1.7.0'
     implementation 'androidx.compose.material:material:1.4.0'
+
+    //hilt
+    implementation "com.google.dagger:hilt-android:2.45"
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    kapt "com.google.dagger:hilt-android-compiler:2.45"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     //camerax
     implementation "androidx.camera:camera-camera2:$camerax_version"

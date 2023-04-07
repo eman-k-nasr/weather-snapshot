@@ -1,10 +1,10 @@
-package com.example.history.data.local
+package com.example.database.room
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.history.data.model.HistoryItem
+import com.example.database.model.HistoryItem
 
 @Dao
 interface HistoryDao {
@@ -15,10 +15,10 @@ interface HistoryDao {
     suspend fun getHistoryById(id: Int) : HistoryItem?
 
     @Insert
-    suspend fun insert(item:HistoryItem)
+    suspend fun insert(item: HistoryItem)
 
     @Delete
-    suspend fun delete(item:HistoryItem)
+    suspend fun delete(item: HistoryItem)
 
     @Query("DELETE FROM history")
     suspend fun deleteAllHistory()

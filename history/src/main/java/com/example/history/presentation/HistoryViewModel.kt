@@ -2,8 +2,8 @@ package com.example.history.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.history.data.model.HistoryItem
-import com.example.history.data.repo.HistoryRepository
+import com.example.database.model.HistoryItem
+import com.example.database.repo.HistoryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -12,7 +12,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class HistoryViewmodel @Inject constructor(
+class HistoryViewModel @Inject constructor(
     private val historyRepository: HistoryRepository
 ): ViewModel() {
 

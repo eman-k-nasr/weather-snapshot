@@ -1,12 +1,12 @@
-package com.example.history.data.repo
+package com.example.database.repo
 
-import com.example.history.data.local.HistoryDatabase
-import com.example.history.data.model.HistoryItem
+import com.example.database.room.HistoryDatabase
+import com.example.database.model.HistoryItem
 import javax.inject.Inject
 
 class HistoryRepositiryImpl @Inject constructor(
     private val historyDatabase: HistoryDatabase
-) : HistoryRepository {
+) : com.example.database.repo.HistoryRepository {
     override suspend fun getAllHistory(): List<HistoryItem> {
         return historyDatabase.historyDao().getAllHistory()
     }
