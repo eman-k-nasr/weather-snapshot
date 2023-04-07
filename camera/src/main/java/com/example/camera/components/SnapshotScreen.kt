@@ -1,6 +1,7 @@
 package com.example.camera.components
 
 import android.net.Uri
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Camera
@@ -32,6 +33,7 @@ fun SnapshotScreen(
         Column{
             if(shouldShowPermission){
                 if(imageUri != emptyImageUri){
+                    Log.d("snapshot","image uri : $imageUri")
                     ImageOverlay(
                         imageInfo = imageInfo,
                         painter = rememberAsyncImagePainter(imageUri)
