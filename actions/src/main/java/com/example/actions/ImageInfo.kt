@@ -9,5 +9,6 @@ data class ImageInfo(
     val date: String = "3 April",
     val time: String = "10:36",
     val temperature: String = "22 c",
-    val status: String = "Clear"
+    val status: String = "Clear",
+    val imageUri: String? = ""
 ) : Parcelable

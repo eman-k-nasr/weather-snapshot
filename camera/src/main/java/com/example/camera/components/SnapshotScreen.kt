@@ -5,14 +5,13 @@ import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Camera
-import androidx.compose.material.icons.outlined.ThumbUp
+import androidx.compose.material.icons.outlined.Share
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
-import coil.compose.rememberAsyncImagePainter
 import com.example.actions.ImageInfo
 import com.example.camera.R
 import com.example.database.model.HistoryItem
@@ -20,9 +19,11 @@ import com.example.utils.IconTextButton
 
 @Composable
 fun SnapshotScreen(
+    snapshot: @Composable (ImageInfo) -> Unit,
     imageInfo: ImageInfo?,
     modifier: Modifier,
     onImageCaptured: (HistoryItem) -> Unit,
+    shareSnapshot: (ImageInfo) -> Unit,
 ){
     Column(
         modifier = modifier,
@@ -36,12 +37,9 @@ fun SnapshotScreen(
             if(shouldShowPermission){
                 if(imageUri != emptyImageUri){
                     Log.d("snapshot","image uri : $imageUri")
-                    ImageOverlay(
-                        imageInfo = imageInfo,
-                        painter = rememberAsyncImagePainter(imageUri)
-                    )
 
                     imageInfo?.let {
+                        snapshot.invoke(imageInfo.copy(imageUri = imageUri.toString()))
                         onImageCaptured.invoke(
                             HistoryItem(
                                 imageUri = imageUri.toString(),
@@ -54,15 +52,16 @@ fun SnapshotScreen(
                         )
                     }
 
-
                     IconTextButton(
                         modifier = Modifier
                             .padding(bottom = 16.dp)
                             .align(Alignment.CenterHorizontally),
                         text = "Share it!!",
-                        icon = Icons.Outlined.ThumbUp
+                        icon = Icons.Outlined.Share
                     ) {
-                        shareImage()
+                        imageInfo?.let {
+                            shareSnapshot.invoke(it.copy(imageUri = imageUri.toString()))
+                        }
                     }
 
                 }else{
@@ -92,8 +91,4 @@ fun SnapshotScreen(
             shouldShowPermission = true
         }
     }
-}
-
-fun shareImage() {
-
 }
